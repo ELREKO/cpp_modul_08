@@ -1,0 +1,100 @@
+
+# Array
+Ideal für Speicher aber <span style="background-color: green;">muss zur Compiler Zeit bekannt sein!</span> 
+
+## Include
+```cpp
+#include <array>
+```
+
+## Konstruktoren
+```cpp
+std::array<int, 5> arr1;                        // Standard-Konstruktor (alle Elemente sind uninitialisiert)
+std::array<int, 5> arr2 = {1, 2, 3, 4, 5};     // Initialisierung mit Werten
+std::array<int, 5> arr3 = {};                   // Alle Elemente sind 0
+std::array<int, 5> arr4 = arr2;                 // Kopieren von einem anderen Array
+```
+
+## Methoden
+
+Die häufigsten Methoden des `std::array` Containers
+
+| Methode                     | Beschreibung                                                               | Beispiel                                      |
+|----------------------------|---------------------------------------------------------------------------|-----------------------------------------------|
+| `at(index)`                | Gibt das Element an der angegebenen Position zurück (Bound Check).      | `int value = arr.at(2);`                     |
+| `operator[]`               | Gibt das Element an der angegebenen Position zurück (kein Bound Check).  | `int value = arr[2];`                        |
+| `front()`                  | Gibt das erste Element zurück.                                           | `int first = arr.front();`                   |
+| `back()`                   | Gibt das letzte Element zurück.                                          | `int last = arr.back();`                     |
+| `size()`                   | Gibt die Anzahl der Elemente im Array zurück.                            | `size_t n = arr.size();`                     |
+| `fill(value)`              | Füllt das Array mit dem angegebenen Wert.                               | `arr.fill(10);`                              |
+| `data()`                   | Gibt einen Zeiger auf das unterliegende Array zurück.                   | `int* p = arr.data();`                       |
+
+1. **`at(index)`**:
+   - **Beschreibung**: Gibt das Element an der angegebenen Position zurück und führt einen Bound Check durch.
+   - **Beispiel**:
+     ```cpp
+     std::array<int, 5> arr = {1, 2, 3, 4, 5};
+     int value = arr.at(2); // Gibt 3 zurück
+     ```
+
+2. **`fill(value)`**:
+   - **Beschreibung**: Füllt alle Elemente des Arrays mit dem angegebenen Wert.
+   - **Beispiel**:
+     ```cpp
+     std::array<int, 5> arr;
+     arr.fill(10); // Füllt das Array mit 10
+     // Array hat jetzt: [10, 10, 10, 10, 10]
+     ```
+
+## Zugriff auf Elemente
+- **Direkter Zugriff** über Indizes:
+  - `operator[]` hat keinen Bound Check, daher kann es zu undefiniertem Verhalten führen, wenn der Index außerhalb des gültigen Bereichs liegt.
+  - `at()` führt einen Bound Check durch und wirft eine `std::out_of_range`-Ausnahme, wenn der Index ungültig ist.
+
+```cpp
+#include <iostream>
+#include <array>
+
+int main() {
+    std::array<int, 5> arr = {1, 2, 3, 4, 5};
+    
+    try {
+        std::cout << arr.at(10) << std::endl;  // Ausnahme wird geworfen 
+    } catch (const std::out_of_range& e) {
+        std::cerr << "Index out of range: " << e.what() << std::endl;
+    }
+
+    return 0;
+}
+```
+
+## Iteratoren
+- `begin()` und `end()`: Vorwärtsiteration
+- `rbegin()` und `rend()`: Rückwärtsiteration
+- `cbegin()` und `cend()`: Konstanten-Iteratoren (Keine Modifikation)
+
+```cpp
+#include <iostream>
+#include <array>
+
+int main() {
+    std::array<int, 5> arr = {1, 2, 3, 4, 5};
+
+    // Iteration mit einem Iterator
+    for (std::array<int, 5>::iterator it = arr.begin(); it != arr.end(); ++it) {
+        std::cout << *it << " ";  // Ausgabe: 1 2 3 4 5
+    }
+    std::cout << std::endl;
+
+    // Rückwärtsiterieren mit rbegin() und rend()
+    for (std::array<int, 5>::reverse_iterator rit = arr.rbegin(); rit != arr.rend(); ++rit) {
+        std::cout << *rit << " ";  // Ausgabe: 5 4 3 2 1
+    }
+
+    for (std::array<int, 5>::const_iterator it = arr.cbegin(); it != arr.cend(); ++it) {
+        std::cout << *it << " "; // Gibt die Werte aus, kann aber nicht modifiziert werden
+    }
+
+    return 0;
+}
+```
