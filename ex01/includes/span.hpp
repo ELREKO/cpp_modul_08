@@ -1,5 +1,5 @@
-#ifndef EASYFINDER_HPP
-#define EASYFINDER_HPP
+#ifndef SPAN_HPP
+#define SPAN_HPP
 
 #include <iostream>
 #include <vector>

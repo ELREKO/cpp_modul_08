@@ -1,7 +1,7 @@
 .vscode
 *.o
 
-# cpp 07
-whatever
-Iter
-Array
+# cpp 08
+easyfind
+span
+MutatedStack
