@@ -1,28 +1,47 @@
-CC = c++
-NAME = easyfind
+# Compiler and flags
+CXX = c++
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-FLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -MMD -I ./ 
-HEADER = easyfind.hpp
-SRC = main.cpp 
-OBJS = $(SRC:.cpp=.o)
-DEPS = $(SRC:.cpp=.d)
-RM = rm -rf
+# Directories
+#SRC_DIR = src
+OBJ_DIR = build
 
-all: $(NAME)
 
--include $(DEPS)
-$(NAME): $(OBJS)
-	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+# List of source files (excluding main.cpp)
+SRC_FILES = main.cpp # $(wildcard $(SRC_DIR)/*.cpp) $(wildcard $(LIB_DIR)/*.cpp)
 
-%.o: %.cpp Makefile $(HEADER )
-	$(CC) $(FLAGS) -c $< -o $@
+# Derive object file names from source file names
+OBJECTS = $(patsubst %.cpp,$(OBJ_DIR)/%.o,$(notdir $(SRC_FILES)))
+
+# Executable name
+EXECUTABLE = easyfind
+
+# Targets
+all: $(OBJ_DIR) $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJECTS) $(OBJ_DIR)/main.o
+	$(CXX) $(CPPFLAGS) $^ -o $@
+
+# Rule to compile .cpp files in src
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+	$(CXX) $(CPPFLAGS) -I$(LIB_DIR) -c $< -o $@
+
+# Rule to compile .cpp files in lib
+$(OBJ_DIR)/%.o: $(LIB_DIR)/%.cpp | $(OBJ_DIR)
+	$(CXX) $(CPPFLAGS) -I$(INCLUDES_DIR) -I$(LIB_DIR) -c $< -o $@
+
+$(OBJ_DIR)/main.o: main.cpp | $(OBJ_DIR)
+	$(CXX) $(CPPFLAGS) -I$(INCLUDES_DIR) -I$(LIB_DIR) -c $< -o $@
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
 clean:
-	$(RM) $(OBJS) $(DEPS)
+	$(RM) -r $(OBJ_DIR) 
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(EXECUTABLE)
 
 re: fclean all
 
-.PHONY: clean fclean all re
+.PHONY: all clean fclean re

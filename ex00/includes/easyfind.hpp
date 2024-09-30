@@ -6,7 +6,9 @@
 #include <list>
 #include <deque>
 //#include <algorithm> // für std::find
-#include <exception> 
+#include <exception>
+#include <ctime>
+#include <cstdlib> 
 
 class NotFoundException : public std::exception 
 {
