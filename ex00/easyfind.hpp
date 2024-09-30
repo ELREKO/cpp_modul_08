@@ -1,7 +1,22 @@
-#include <iostream>
+#ifndef EASYFINDER_HPP
+#define EASYFINDER_HPP
 
-template <typename T>
-typename T::iterator easyfind(T &conainer, int value)
+#include <iostream>
+#include <vector>
+#include <list>
+#include <deque>
+//#include <algorithm> // für std::find
+#include <exception> 
+
+class NotFoundException : public std::exception 
 {
-	typename T::iterator ite = 
-}
+	public: 
+		const char* what() const throw()
+		{
+			return "value not in the container!";
+		}
+};
+
+#include "easyfind.tpp"
+
+#endif
