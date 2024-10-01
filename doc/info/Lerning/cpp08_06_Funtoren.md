@@ -1,42 +1,42 @@
 
 < [back](cpp08_05_Iteratoren.md) | [main](/) | [forward](cpp08_00_lerning.md) >
 
-# Funktoren in C++
+# Functors in C++
 
-## Was ist ein Funktor?
-Ein **Funktor** ist ein Objekt in C++, das sich wie eine Funktion verhält. Dies wird erreicht, indem der **Funktionsaufrufsoperator** (`operator()`) überladen wird. Dadurch kann das Objekt wie eine Funktion aufgerufen werden.
+## What is a Functor?
+A **functor** is an object in C++ that behaves like a function. This is achieved by overloading the **function call operator** (`operator()`). As a result, the object can be invoked like a function.
 
-## Merkmale von Funktoren
-- **Klasse mit `operator()`**: Funktoren sind Klassen, die den `operator()` überladen.
-- **Zustandsbehaftet**: Funktoren können internen Zustand speichern, was bei normalen Funktionen nicht möglich ist.
-- **Flexibilität**: Sie ermöglichen eine einfache Parametrisierung von Algorithmen.
+## Features of Functors
+- **Class with `operator()`**: Functors are classes that overload the `operator()`.
+- **Stateful**: Functors can store internal state, which is not possible with regular functions.
+- **Flexibility**: They allow easy parameterization of algorithms.
 
-## Beispiel eines Funktors
+## Example of a Functor
 
 ```cpp
 #include <iostream>
 
-// Definition eines Funktors
+// Definition of a Functor
 class Adder {
 public:
-    // Überladener Funktionsaufrufsoperator
+    // Overloaded function call operator
     int operator()(int a, int b) {
-        return a + b; // Addiere die beiden Zahlen
+        return a + b; // Add the two numbers
     }
 };
 
 int main() {
-    Adder add; // Instanziierung des Funktors
-    std::cout << add(2, 3) << std::endl; // Ausgabe: 5
+    Adder add; // Instantiation of the functor
+    std::cout << add(2, 3) << std::endl; // Output: 5
     return 0;
 }
 ```
 
-## Vorteile von Funktoren
-1. **Zustand speichern**: Funktoren können Variablen haben, die ihren Wert zwischen Aufrufen behalten.
-2. **Wiederverwendbarkeit**: Sie können auf verschiedene Datentypen oder Operationen spezialisiert werden.
-3. **Integration in STL**: Funktoren können problemlos in STL-Algorithmen verwendet werden.
+## Advantages of Functors
+1. **State storage**: Functors can have variables that retain their value between calls.
+2. **Reusability**: They can be specialized for different data types or operations.
+3. **Integration with STL**: Functors can be easily used in STL algorithms.
 
-## Unterschied zu anderen Konzepten
-- **Funktionszeiger**: Zeigen auf eine Funktion, haben jedoch keinen Zustand.
-- **Überladung von `operator=`**: Bestimmt, wie eine Instanz einer Klasse einer anderen Instanz zugewiesen wird, <span style="color:red">ist aber kein Funktor</span>.
+## Difference from Other Concepts
+- **Function pointers**: Point to a function but have no state.
+- **Overloading `operator=`**: Determines how an instance of a class is assigned to another instance, <span style="color:red">but is not a functor</span>.
