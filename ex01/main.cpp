@@ -1,11 +1,11 @@
 #include "includes/span.hpp"
 
 // add a big set of numbers 
-void test_set_1 (void)
+void test_set_add_conainer_to_span (void)
 {   unsigned int range = 10;
     unsigned int max_numbers = 10000;
-    int min_range = -2140000; // Beispiel: Minimaler Wert
-    int max_range = 2140000; // Beispiel: Maximaler Wert
+    int min_range = 0; // Beispiel: Minimaler Wert
+    int max_range = 10; // Beispiel: Maximaler Wert
 
     std::cout << "Range of " << range << " numbers" << std::endl; 
     Span sp(range);
@@ -18,10 +18,25 @@ void test_set_1 (void)
     std::cout << "Size of the vector: " << random_vector.size() << std::endl;
     sp.addRange(random_vector.begin(), random_vector.end());
     sp.printSpan();
+
+    sp.trySpanFkt(&Span::shortestSpan);
+    sp.trySpanFkt(&Span::longestSpan);
+
+    std::cout << std::endl << "Other output" << std::endl;
+     
+    try
+    {
+        std::cout << "shortes Span: " << sp.shortestSpan() << std::endl;
+        std::cout << "longest Span: " << sp.longestSpan() << std::endl; 
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
 }
 
 // Schecke ERRORS
-void test_set_2(void)
+void test_set_errorhandling(void)
 {
     unsigned int range = 1;
     unsigned int max_numbers = 10000;
@@ -63,9 +78,10 @@ void test_subject()
 
 int main (void)
 {
-  //test_set_1();
-  //test_set_2();
-  //test_subject();
+  test_subject();
+  //test_set_add_conainer_to_span();
+  //test_set_errorhandling();
+  
   return 0;
 }
 

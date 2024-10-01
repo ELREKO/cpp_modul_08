@@ -94,6 +94,7 @@ int test_stack_list()
 
   std::cout << std::endl << "print list: " << std::endl;
   it = st_lst.begin();
+  ite = st_lst.end();
   while (it != ite)
   {
     std::cout << *it << std::endl;
@@ -143,6 +144,7 @@ int test_stack_vector()
 
   std::cout << std::endl << "print vector: " << std::endl;
   it = st_vec.begin();
+  ite = st_vec.end();
   while (it != ite)
   {
     std::cout << *it << std::endl;
@@ -155,9 +157,9 @@ int test_stack_vector()
 
 int main (void)
 {
-     test_subject();
-  // test_stack_list();
-  // test_stack_vector();
+  test_subject();
+  //test_stack_list();
+  //test_stack_vector();
  
   return 0;
 }

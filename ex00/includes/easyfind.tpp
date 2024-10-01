@@ -17,7 +17,8 @@ void tryEasyfind(T& container, int value)
 	try
 	{
 		typename T::iterator ef = easyfind(container, value);
-		std::cout << "found: " << *ef << "!" << std::endl;
+		int position = std::distance(container.begin(), ef);
+		std::cout << "found: " << *ef << " at position: " << position <<" !" << std::endl;
 	}
 	catch(NotFoundException &e)
 	{
