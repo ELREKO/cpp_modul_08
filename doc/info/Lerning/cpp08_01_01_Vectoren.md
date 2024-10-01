@@ -1,57 +1,58 @@
-# Vectoren 
-## include 
+
+# Vectors 
+## Include 
 ```cpp
 #include <vector>
 ```
 
-## Konstructoren 
+## Constructors 
 ```cpp
     std::vector<int> vec1; // Default Constructor 
-    std::vector<int> vec2(5);  // Vector mit 5 Elementen, alle mit 0 initialisiert
-    std::vector<int> vec3(5, 10);  // Vector mit 5 Elementen, alle mit dem Wert 10
-    std::vector<int> vec4 = {1, 2, 3, 4, 5}; // Vector mit 5 Elemententen mit dem entsprechenden Wert
+    std::vector<int> vec2(5);  // Vector with 5 elements, all initialized to 0
+    std::vector<int> vec3(5, 10);  // Vector with 5 elements, all set to the value 10
+    std::vector<int> vec4 = {1, 2, 3, 4, 5}; // Vector with 5 elements with the corresponding values
     std::vector<int> vec5(vec4); // Copy Vector 
-    vec1 = vec5 // Zuweisung Vector 
+    vec1 = vec5; // Assignment Vector 
 ```
 
-## Methoden 
+## Methods 
 
-Die häufigsten Methoden des `std::vector` Containers
+The most common methods of the `std::vector` container
 
-| Methode                     | Beschreibung                                                                 | Beispiel                                         |
-|----------------------------|-----------------------------------------------------------------------------|--------------------------------------------------|
-| `push_back(value)`         | Fügt ein Element am Ende des Vektors hinzu.                              | `vec.push_back(7.2);`                           |
-| `pop_back()`               | Entfernt das letzte Element des Vektors.                                  | `vec.pop_back();`                               |
-| `insert(position, value)`   | Fügt ein Element an der angegebenen Position im Vektor ein.               | `vec.insert(vec.begin() + 1, 5.5);`             |
-| `erase(position)`          | Entfernt das Element an der angegebenen Position.                          | `vec.erase(vec.begin() + 1);`                   |
-| `clear()`                  | Entfernt alle Elemente aus dem Vektor.                                    | `vec.clear();`                                  |
-| `size()`                   | Gibt die Anzahl der aktuellen Elemente im Vektor zurück.                  | `size_t n = vec.size();`                        |
-| `capacity()`               | Gibt die derzeitige Kapazität des Vektors zurück.                        | `size_t cap = vec.capacity();`                  |
-| `resize(new_size)`         | Ändert die Größe des Vektors auf `new_size`.                             | `vec.resize(5);`                                |
-| `shrink_to_fit()`          | Reduziert die Kapazität des Vektors auf die aktuelle Größe.              | `vec.shrink_to_fit();`                          |
+| Method                     | Description                                                                | Example                                         |
+|----------------------------|----------------------------------------------------------------------------|--------------------------------------------------|
+| `push_back(value)`         | Adds an element to the end of the vector.                                 | `vec.push_back(7.2);`                           |
+| `pop_back()`               | Removes the last element of the vector.                                   | `vec.pop_back();`                               |
+| `insert(position, value)`   | Inserts an element at the specified position in the vector.               | `vec.insert(vec.begin() + 1, 5.5);`             |
+| `erase(position)`          | Removes the element at the specified position.                             | `vec.erase(vec.begin() + 1);`                   |
+| `clear()`                  | Removes all elements from the vector.                                     | `vec.clear();`                                  |
+| `size()`                   | Returns the number of current elements in the vector.                     | `size_t n = vec.size();`                        |
+| `capacity()`               | Returns the current capacity of the vector.                               | `size_t cap = vec.capacity();`                  |
+| `resize(new_size)`         | Changes the size of the vector to `new_size`.                            | `vec.resize(5);`                                |
+| `shrink_to_fit()`          | Reduces the capacity of the vector to the current size.                   | `vec.shrink_to_fit();`                          |
 
-- Die Angabe der Position bei `insert()` und `earase()` müssen entsprechend mit der zuhilfename des iterators angeben werden `vec.begin() + 1` (Was die Position 1 ist, also das 2 Element) z.B. `vec.insert(1,5.5)` würde zu einem Kompilierungsfehler führen. 
+- The position specified in `insert()` and `erase()` must be indicated using an iterator, like `vec.begin() + 1` (which refers to position 1, or the second element). For example, `vec.insert(1, 5.5)` would result in a compilation error. 
 
 1. **`insert(position, value)`**:
-   - **Beschreibung**: Fügt ein Element an einer bestimmten Position im Vektor ein. Die Position wird durch einen Iterator angegeben.
-   - **Beispiel**:
+   - **Description**: Inserts an element at a specific position in the vector. The position is indicated by an iterator.
+   - **Example**:
      ```cpp
-     std::vector<double> vec = {1.1, 2.2, 3.3}; // Vektor hat: [1.1, 2.2, 3.3]
-     vec.insert(vec.begin() + 1, 5.5); // Fügt 5.5 an der Position 1 hinzu
-     // Vektor hat jetzt: [1.1, 5.5, 2.2, 3.3]
+     std::vector<double> vec = {1.1, 2.2, 3.3}; // Vector contains: [1.1, 2.2, 3.3]
+     vec.insert(vec.begin() + 1, 5.5); // Inserts 5.5 at position 1
+     // Vector now contains: [1.1, 5.5, 2.2, 3.3]
      ```
 
 1. **`erase(position)`**:
-   - **Beschreibung**: Entfernt das Element an einer bestimmten Position im Vektor.
-   - **Beispiel**:
+   - **Description**: Removes the element at a specific position in the vector.
+   - **Example**:
      ```cpp
-     vec.erase(vec.begin() + 1); // Entfernt das Element an Position 1 (5.5)
-     // Vektor hat jetzt: [1.1, 2.2, 3.3]
+     vec.erase(vec.begin() + 1); // Removes the element at position 1 (5.5)
+     // Vector now contains: [1.1, 2.2, 3.3]
      ```
 
-## Zugriff auf Elemente 
-- operator`[]` -> kein Bound Check
-- `at()` -> Bound Check -> `std::out_of_range`
+## Accessing Elements 
+- `operator[]` -> no bound check
+- `at()` -> bound check -> `std::out_of_range`
 
 ```cpp
 #include <iostream>
@@ -60,7 +61,7 @@ Die häufigsten Methoden des `std::vector` Containers
 int main() {
     std::vector<int> vec = {1, 2, 3, 4, 5};
     try {
-        std::cout << vec.at(10) << std::endl;  // Ausnahme wird geworfen 
+        std::cout << vec.at(10) << std::endl;  // Exception will be thrown 
     } catch (const std::out_of_range& e) {
         std::cerr << "Index out of range: " << e.what() << std::endl;
     }
@@ -69,10 +70,10 @@ int main() {
 }
 ```
 
-## Iteratoren 
-- `begin()` und `end()`: Vorwärtsiteration
-- `rbegin()` und `rend()`: Rückwärtsiteration
-- `cbegin()` und `cend()`: Konstanten-Iteratoren (Keine Modifikation)
+## Iterators 
+- `begin()` and `end()`: Forward iteration
+- `rbegin()` and `rend()`: Reverse iteration
+- `cbegin()` and `cend()`: Constant iterators (no modifications allowed)
 
 ```cpp
 #include <iostream>
@@ -81,19 +82,19 @@ int main() {
 int main() {
     std::vector<int> vec = {1, 2, 3, 4, 5};
 
-    // Iteration mit einem Iterator
+    // Iterating with an iterator
     for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) {
-        std::cout << *it << " ";  // Ausgabe: 1 2 3 4 5
+        std::cout << *it << " ";  // Output: 1 2 3 4 5
     }
     std::cout << std::endl;
 
-    // Rückwärtsiterieren mit rbegin() und rend()
+    // Reverse iteration with rbegin() and rend()
     for (std::vector<int>::reverse_iterator rit = vec.rbegin(); rit != vec.rend(); ++rit) {
-        std::cout << *rit << " ";  // Ausgabe: 5 4 3 2 1
+        std::cout << *rit << " ";  // Output: 5 4 3 2 1
     }
 
     for (std::vector<int>::const_iterator it = vec.cbegin(); it != vec.cend(); ++it) {
-        std::cout << *it << " "; // Gibt die Werte aus, kann aber nicht modifiziert werden
+        std::cout << *it << " "; // Outputs the values, but cannot be modified
     }
 
     return 0;

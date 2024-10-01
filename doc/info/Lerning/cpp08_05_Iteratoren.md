@@ -1,10 +1,11 @@
-< [back](cpp08_04_Algoritmen.md) | [main](/) | [forward](cpp08_06_Funtoren.md) > 
+
+< [back](cpp08_04_Algoritmen.md) | [main](/) | [forward](cpp08_06_Funtoren.md) >
 
 # Iteratoren
+
 ### Was sind Iteratoren?
 
 In C++ sind **Iteratoren** spezielle Objekte, die dazu verwendet werden, über Elemente eines Containers (wie `std::vector`, `std::list`, `std::set` etc.) zu iterieren und auf sie zuzugreifen. Sie funktionieren ähnlich wie Zeiger, ermöglichen aber einen allgemeinen Zugriff auf Container und deren Elemente, unabhängig vom Typ des Containers.
-
 
 ### Verwendung von Iteratoren
 
@@ -66,7 +67,6 @@ int main() {
 | `std::deque`     | Random-Access-Iterator | Beliebiger Zugriff ähnlich wie `std::vector` |
 | `std::stack`     | Keine Iteratoren       | `std::stack` bietet <span style="color:red"> keinen direkten Iterator-Zugriff</span> |
 
-
 ### Wichtige Iterator-Operationen und ihre Verwendung
 
 | Operation         | Beschreibung                                      | Beispiel                                          |
@@ -84,7 +84,6 @@ int main() {
 | `it[n]`           | Greift auf das `n`-te Element relativ zum Iterator zu (nur für Random-Access-Iteratoren). | `std::cout << it[2];`                             |
 | `std::distance(first, last)` | Gibt die Anzahl der Elemente zwischen zwei Iteratoren zurück. | `std::distance(vec.begin(), vec.end());`          |
 | `std::advance(it, n)` | Bewegt den Iterator um `n` Positionen vorwärts oder rückwärts. | `std::advance(it, 3);`                            |
-
 
 ### Unterschiedliche Iterator-Kategorien
 

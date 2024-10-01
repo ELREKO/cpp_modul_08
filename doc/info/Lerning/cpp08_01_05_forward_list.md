@@ -1,58 +1,57 @@
 
 # Forward List
-Wie `list` keine zufälliger Elementzugriff möglich! 
-Benötigt weniger Speicher als list ist!
-
+Like `list`, random element access is not possible! 
+Requires less memory than `list`!
 
 ## Include
 ```cpp
 #include <forward_list>
 ```
 
-## Konstruktoren
+## Constructors
 ```cpp
-std::forward_list<int> flst1;                  // Default Constructor 
-std::forward_list<int> flst2(5);               // Forward List mit 5 Elementen, alle mit 0 initialisiert
-std::forward_list<int> flst3(5, 10);           // Forward List mit 5 Elementen, alle mit dem Wert 10
-std::forward_list<int> flst4 = {1, 2, 3, 4, 5}; // Forward List mit 5 Elementen mit den entsprechenden Werten
-std::forward_list<int> flst5(flst4);            // Copy Forward List 
-flst1 = flst5;                                  // Zuweisung Forward List 
+std::forward_list<int> flst1;                  // Default constructor 
+std::forward_list<int> flst2(5);               // Forward list with 5 elements, all initialized to 0
+std::forward_list<int> flst3(5, 10);           // Forward list with 5 elements, all with the value 10
+std::forward_list<int> flst4 = {1, 2, 3, 4, 5}; // Forward list with 5 elements with the corresponding values
+std::forward_list<int> flst5(flst4);            // Copy forward list 
+flst1 = flst5;                                  // Assignment of forward list 
 ```
 
-## Methoden
+## Methods
 
-Die häufigsten Methoden des `std::forward_list` Containers
+The most common methods of the `std::forward_list` container
 
-| Methode                     | Beschreibung                                                              | Beispiel                                      |
+| Method                     | Description                                                              | Example                                      |
 |----------------------------|--------------------------------------------------------------------------|-----------------------------------------------|
-| `push_front(value)`        | Fügt ein Element am Anfang der Forward List hinzu.                     | `flst.push_front(0);`                        |
-| `pop_front()`              | Entfernt das erste Element der Forward List.                            | `flst.pop_front();`                          |
-| `insert_after(position, value)` | Fügt ein Element nach der angegebenen Position in der Liste ein.  | `flst.insert_after(flst.begin(), 5);`       |
-| `erase_after(position)`     | Entfernt das Element nach der angegebenen Position.                   | `flst.erase_after(flst.begin());`           |
-| `clear()`                  | Entfernt alle Elemente aus der Forward List.                            | `flst.clear();`                              |
-| `size()`                   | Gibt die Anzahl der Elemente in der Forward List zurück.                | `size_t n = std::distance(flst.begin(), flst.end());` |
-| `empty()`                  | Überprüft, ob die Forward List leer ist.                                 | `bool isEmpty = flst.empty();`               |
+| `push_front(value)`        | Adds an element to the front of the forward list.                      | `flst.push_front(0);`                        |
+| `pop_front()`              | Removes the first element of the forward list.                         | `flst.pop_front();`                          |
+| `insert_after(position, value)` | Inserts an element after the specified position in the list.     | `flst.insert_after(flst.begin(), 5);`       |
+| `erase_after(position)`     | Removes the element after the specified position.                     | `flst.erase_after(flst.begin());`           |
+| `clear()`                  | Removes all elements from the forward list.                             | `flst.clear();`                              |
+| `size()`                   | Returns the number of elements in the forward list.                    | `size_t n = std::distance(flst.begin(), flst.end());` |
+| `empty()`                  | Checks if the forward list is empty.                                    | `bool isEmpty = flst.empty();`               |
 
 1. **`insert_after(position, value)`**:
-   - **Beschreibung**: Fügt ein Element nach einer bestimmten Position in der Forward List ein. Die Position wird durch einen Iterator angegeben.
-   - **Beispiel**:
+   - **Description**: Inserts an element after a specified position in the forward list. The position is specified by an iterator.
+   - **Example**:
      ```cpp
-     std::forward_list<double> flst = {1.1, 2.2, 3.3}; // Forward List hat: [1.1, 2.2, 3.3]
-     flst.insert_after(flst.begin(), 5.5); // Fügt 5.5 nach der Position 0 hinzu
-     // Forward List hat jetzt: [1.1, 5.5, 2.2, 3.3]
+     std::forward_list<double> flst = {1.1, 2.2, 3.3}; // Forward list contains: [1.1, 2.2, 3.3]
+     flst.insert_after(flst.begin(), 5.5); // Inserts 5.5 after position 0
+     // Forward list now contains: [1.1, 5.5, 2.2, 3.3]
      ```
 
 2. **`erase_after(position)`**:
-   - **Beschreibung**: Entfernt das Element nach einer bestimmten Position in der Forward List.
-   - **Beispiel**:
+   - **Description**: Removes the element after a specified position in the forward list.
+   - **Example**:
      ```cpp
-     flst.erase_after(flst.begin()); // Entfernt das Element nach der Position 0 (5.5)
-     // Forward List hat jetzt: [1.1, 2.2, 3.3]
+     flst.erase_after(flst.begin()); // Removes the element after position 0 (5.5)
+     // Forward list now contains: [1.1, 2.2, 3.3]
      ```
 
-## Zugriff auf Elemente
-- **Kein direkter Zugriff** über Indizes, da es sich um eine einfach verkettete Liste handelt. Der Zugriff erfolgt normalerweise über Iteratoren.
-- **`front()`**: Gibt das erste Element zurück (kein Bound Check).
+## Accessing Elements
+- **No direct access** via indices, as it is a singly linked list. Access is typically done through iterators.
+- **`front()`**: Returns the first element (no bound check).
 
 ```cpp
 #include <iostream>
@@ -61,16 +60,16 @@ Die häufigsten Methoden des `std::forward_list` Containers
 int main() {
     std::forward_list<int> flst = {1, 2, 3, 4, 5};
     
-    // Zugriff auf das erste Element
-    std::cout << "First element: " << flst.front() << std::endl; // Ausgabe: 1
+    // Accessing the first element
+    std::cout << "First element: " << flst.front() << std::endl; // Output: 1
 
     return 0;
 }
 ```
 
-## Iteratoren
-- `begin()` und `end()`: Vorwärtsiteration
-- `cbegin()` und `cend()`: Konstanten-Iteratoren (Keine Modifikation)
+## Iterators
+- `begin()` and `end()`: Forward iteration
+- `cbegin()` and `cend()`: Constant iterators (no modifications allowed)
 
 ```cpp
 #include <iostream>
@@ -79,14 +78,14 @@ int main() {
 int main() {
     std::forward_list<int> flst = {1, 2, 3, 4, 5};
 
-    // Iteration mit einem Iterator
+    // Iterating with an iterator
     for (std::forward_list<int>::iterator it = flst.begin(); it != flst.end(); ++it) {
-        std::cout << *it << " ";  // Ausgabe: 1 2 3 4 5
+        std::cout << *it << " ";  // Output: 1 2 3 4 5
     }
     std::cout << std::endl;
 
     for (std::forward_list<int>::const_iterator it = flst.cbegin(); it != flst.cend(); ++it) {
-        std::cout << *it << " "; // Gibt die Werte aus, kann aber nicht modifiziert werden
+        std::cout << *it << " "; // Outputs the values, but cannot be modified
     }
 
     return 0;

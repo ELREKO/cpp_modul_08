@@ -1,55 +1,53 @@
-< [back](cpp08_00_lerning.md)| [main](/) | [forward](cpp08_02_00_Container_Assoziativ.md) > 
+< [back](cpp08_00_learning.md)| [main](/) | [forward](cpp08_02_00_Container_Assoziativ.md) > 
 
 ---
 
-# Sequenzielle Container
+# Sequential Containers
 ## [std::vector](cpp08_01_01_Vectoren.md) 
-- Art dynamische Array mit einem Speicherblock
-### Vorteile
-- dynamisches vergrössern und verkleinern in bezug auf das Ende. 
-- Schneller Zufallszugriff Zeitkomplexität `O(1)`
-## Nachteile  
-- Elemente die am Anfang oder der Mitte eingefügt werden brauchen `O(n)` Koplieranweisungen und sind daher sehr Teuer.
-
+- Type of dynamic array with a memory block
+### Advantages
+- Dynamic resizing in relation to the end. 
+- Fast random access time complexity `O(1)`
+## Disadvantages  
+- Elements inserted at the beginning or in the middle require `O(n)` copy instructions and are therefore very expensive.
 
 ## [std::deque](cpp08_01_02_deque.md)
-- Art die dynamisches Array mit mehren Speicherblöcken
-### Vorteile:
-- **Schnelles Einfügen** und Entfernen am Anfang und am Ende.
-- Zufälliger Zugriff auf die Elemente, ähnlich wie bei vector.
-### Nachteile 
-- Da aus mehren Speicherblöcken bestehnde -> Overhead -> mehr Speicherbedarf
-
+- Type of dynamic array with multiple memory blocks
+### Advantages:
+- **Fast insertion** and removal at both the beginning and the end.
+- Random access to elements, similar to `vector`.
+### Disadvantages 
+- Since it consists of multiple memory blocks -> overhead -> higher memory usage.
 
 ## [std::list](cpp08_01_03_list.md)
-- doppelt verkettete Liste 
-### Vorteile 
-- **Effizientes Einfügen und Löschen** an jeder beliebigen Stelle (O(1)).
-- Ideal für Löschen und Einfuegen im Listeninneren 
-### Nachteile 
-- Da viele Speicherblöcke -> Overhead -> mehr Speicherbedarf
-- Kein Schneller Zugriff wie bei `array`, `Vectoren`, `deque`
+- Doubly linked list 
+### Advantages 
+- **Efficient insertion and deletion** at any position (O(1)).
+- Ideal for deletion and insertion within the list. 
+### Disadvantages 
+- Due to many memory blocks -> overhead -> higher memory usage.
+- No fast access like in `array`, `vector`, `deque`.
 
-## [std::array (since c++11)](cpp08_01_04_array)
--  statische Version des Arrays
-### Vorteile 
-- Effizienter Speicher da Grösse zur Kompile Zeit bekannt sein muss
-### Nachteile
-- Keine dynamische Grössenanpassung möglich
+## [std::array (since C++11)](cpp08_01_04_array)
+- Static version of the array
+### Advantages 
+- Efficient memory since size must be known at compile time.
+### Disadvantages
+- No dynamic resizing possible.
 
-## [std::forward_list (since c++11)](cpp08_01_05_forward_list.md)
-- einfach verkettete Liste
-### Vorteile 
-- Weniger Speicherplatzbedarf als `list`
-- Effizentes Einfügen eines Elementes in die Liste 'O(1)`
-### Nachteile
-- Richtungsgebunden 
-- Keine Zufälliges zugreifen auf Elemente 
+## [std::forward_list (since C++11)](cpp08_01_05_forward_list.md)
+- Singly linked list
+### Advantages 
+- Less memory usage than `list`.
+- Efficient insertion of an element into the list `O(1)`.
+### Disadvantages
+- Directionally bound.
+- No random access to elements.
 
 ## [std::stack](cpp08_01_06_stack.md)
-Benutzt andere Sequenzielle Container wie `vector`, `list`, `set` und basiert auf den **LIFO** Prinzip. Standartmässig keine Iteratoren verfügbar.  
+Uses other sequential containers like `vector`, `list`, `set` and is based on the **LIFO** principle. By default, no iterators are available.  
 
 ---
-## übersicht
+## Overview
 
-![übersicht](../pic/sequence_containers.png)
+![Overview](../pic/sequence_containers.png)

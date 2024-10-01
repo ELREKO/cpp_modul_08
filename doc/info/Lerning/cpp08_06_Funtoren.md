@@ -1,4 +1,6 @@
-< [back](cpp08_05_Iteratoren.md) | [main](/) | [forward](cpp08_00_lerning.md) > 
+
+< [back](cpp08_05_Iteratoren.md) | [main](/) | [forward](cpp08_00_lerning.md) >
+
 # Funktoren in C++
 
 ## Was ist ein Funktor?
@@ -38,4 +40,3 @@ int main() {
 ## Unterschied zu anderen Konzepten
 - **Funktionszeiger**: Zeigen auf eine Funktion, haben jedoch keinen Zustand.
 - **Überladung von `operator=`**: Bestimmt, wie eine Instanz einer Klasse einer anderen Instanz zugewiesen wird, <span style="color:red">ist aber kein Funktor</span>.
-

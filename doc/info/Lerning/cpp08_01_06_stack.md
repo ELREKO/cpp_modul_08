@@ -1,36 +1,37 @@
+
 # Stack
 ## Include
 ```cpp
 #include <stack>
 ```
 
-## Konstruktoren
+## Constructors
 ```cpp
-std::stack<int> stack1; // Standardkonstruktor
-std::stack<int, std::vector<int>> stack2; // Mit einem bestimmten Container-Typ (hier std::vector)
-std::stack<int> stack3(stack2); // Copy-Constructor
-stack1 = stack3; // Zuweisung
+std::stack<int> stack1; // Default constructor
+std::stack<int, std::vector<int>> stack2; // With a specific container type (here std::vector)
+std::stack<int> stack3(stack2); // Copy constructor
+stack1 = stack3; // Assignment
 ```
 
-`std::stack` ist ein <span style="color:red">Container-Adapter</span>, der auf einem anderen Container (wie `std::deque`, `std::vector`, oder `std::list`) basiert und das **LIFO**-Prinzip (Last In, First Out) verwendet.
+`std::stack` is a <span style="color:red">container adapter</span> that is based on another container (such as `std::deque`, `std::vector`, or `std::list`) and uses the **LIFO** (Last In, First Out) principle.
 
-### Standardmäßig wird `std::deque` als zugrunde liegender Container verwendet:
+### By default, `std::deque` is used as the underlying container:
 ```cpp
-std::stack<int, std::deque<int>> stack; // Standardmäßiger zugrunde liegender Container
+std::stack<int, std::deque<int>> stack; // Default underlying container
 ```
 
-## Methoden
-Die häufigsten Methoden des `std::stack` Containers:
+## Methods
+The most common methods of the `std::stack` container:
 
-| Methode                     | Beschreibung                                                                 | Beispiel                                         |
-|-----------------------------|-----------------------------------------------------------------------------|--------------------------------------------------|
-| `push(value)`                | Fügt ein Element an die Spitze des Stacks hinzu.                            | `stack.push(10);`                                |
-| `pop()`                      | Entfernt das oberste Element des Stacks.                                    | `stack.pop();`                                   |
-| `top()`                      | Gibt das oberste Element des Stacks zurück (ohne es zu entfernen).           | `int val = stack.top();`                         |
-| `empty()`                    | Prüft, ob der Stack leer ist (`true` oder `false`).                         | `if (stack.empty()) { ... }`                     |
-| `size()`                     | Gibt die Anzahl der Elemente im Stack zurück.                               | `size_t n = stack.size();`                       |
+| Method                     | Description                                                                 | Example                                         |
+|----------------------------|-----------------------------------------------------------------------------|--------------------------------------------------|
+| `push(value)`              | Adds an element to the top of the stack.                                   | `stack.push(10);`                                |
+| `pop()`                    | Removes the top element of the stack.                                      | `stack.pop();`                                   |
+| `top()`                    | Returns the top element of the stack (without removing it).                | `int val = stack.top();`                         |
+| `empty()`                  | Checks if the stack is empty (`true` or `false`).                         | `if (stack.empty()) { ... }`                     |
+| `size()`                   | Returns the number of elements in the stack.                               | `size_t n = stack.size();`                       |
 
-## Beispielcode
+## Example Code
 
 ```cpp
 #include <iostream>
@@ -39,31 +40,31 @@ Die häufigsten Methoden des `std::stack` Containers:
 int main() {
     std::stack<int> stack;
 
-    // Elemente in den Stack einfügen
+    // Push elements onto the stack
     stack.push(1);
     stack.push(2);
     stack.push(3);
 
-    // Oberstes Element des Stacks
-    std::cout << "Top element: " << stack.top() << std::endl;  // Ausgabe: 3
+    // Top element of the stack
+    std::cout << "Top element: " << stack.top() << std::endl;  // Output: 3
 
-    // Element entfernen
+    // Remove top element
     stack.pop();
 
-    // Neues oberstes Element
-    std::cout << "New top element: " << stack.top() << std::endl;  // Ausgabe: 2
+    // New top element
+    std::cout << "New top element: " << stack.top() << std::endl;  // Output: 2
 
-    // Stack-Größe und ob er leer ist
-    std::cout << "Stack size: " << stack.size() << std::endl;  // Ausgabe: 2
-    std::cout << "Is stack empty? " << (stack.empty() ? "Yes" : "No") << std::endl;  // Ausgabe: No
+    // Stack size and whether it is empty
+    std::cout << "Stack size: " << stack.size() << std::endl;  // Output: 2
+    std::cout << "Is stack empty? " << (stack.empty() ? "Yes" : "No") << std::endl;  // Output: No
 
     return 0;
 }
 ```
 
-## Zugriff auf Elemente
-- `top()`: Gibt das oberste Element des Stacks zurück, ohne es zu entfernen.
-- `pop()`: Entfernt das oberste Element, aber gibt es **nicht** zurück.
+## Accessing Elements
+- `top()`: Returns the top element of the stack without removing it.
+- `pop()`: Removes the top element but does **not** return it.
 
 ```cpp
 std::stack<int> stack;
@@ -71,25 +72,25 @@ stack.push(10);
 stack.push(20);
 
 int topElement = stack.top(); // topElement == 20
-stack.pop(); // Entfernt 20 vom Stack
+stack.pop(); // Removes 20 from the stack
 topElement = stack.top(); // topElement == 10
 ```
 
-## Standard-Container
-`std::stack` verwendet standardmäßig `std::deque` als zugrunde liegenden Container. Alternativ kann ein anderer Container (z. B. `std::vector` oder `std::list`) spezifiziert werden:
+## Standard Container
+`std::stack` uses `std::deque` as the underlying container by default. Alternatively, a different container (e.g., `std::vector` or `std::list`) can be specified:
 
 ```cpp
 #include <stack>
 #include <vector>
 
-std::stack<int, std::vector<int>> stackWithVector; // Verwendet std::vector anstelle von std::deque
+std::stack<int, std::vector<int>> stackWithVector; // Uses std::vector instead of std::deque
 ```
 
-## Einschränkungen
-- <span style="color:red">**Keine direkten Iteratoren**</span>: Anders als bei `std::vector` oder `std::deque` erlaubt `std::stack` keinen direkten Zugriff auf seine Elemente (kein `begin()`, `end()`, etc.).
-- Nur Zugriff auf das oberste Element mit `top()`.
+## Limitations
+- <span style="color:red">**No direct iterators**</span>: Unlike `std::vector` or `std::deque`, `std::stack` does not allow direct access to its elements (no `begin()`, `end()`, etc.).
+- Only access to the top element with `top()`.
 
-## Anwendung von `std::stack`
-- **Backtracking**: Algorithmen wie Depth-First Search (DFS) verwenden oft Stacks.
-- **Klammerauswertung**: Stacks werden oft verwendet, um Ausdrücke wie Klammern in Compiler-Implementierungen zu analysieren.
-- **Undo-Funktion**: Stacks werden in Software mit Undo-Funktionalität verwendet, um die Reihenfolge von Aktionen zu speichern und rückgängig zu machen.
+## Application of `std::stack`
+- **Backtracking**: Algorithms such as Depth-First Search (DFS) often use stacks.
+- **Bracket Evaluation**: Stacks are often used to analyze expressions like parentheses in compiler implementations.
+- **Undo Functionality**: Stacks are used in software with undo functionality to store and reverse the order of actions.

@@ -1,21 +1,22 @@
+--- 
 [main](/) | [forward](cpp08_01_00_Container_Sequenziell.md) > 
 
 ---
 
-## Lerning in this Modul
+## Learning in this Module
 
-**STL** steht für **Standard Template Library** (Templates -> siehe übung cpp07)
+**STL** stands for **Standard Template Library** (Templates -> see exercise cpp07)
 
-- [Sequenzille Container](cpp08_01_00_Container_Sequenziell.md)
-- [Assozitive Container](cpp08_02_00_Container_Assoziativ.md)
-	- [unsortete Container](cpp08_03_Container_unsort.md)
-- [lib `algortim`](cpp08_04_Algoritmen.md)
-- [iteratoren](cpp08_05_Iteratoren.md)
-- [Funtoren](cpp08_06_Funtoren.md)
+- [Sequential Containers](cpp08_01_00_Container_Sequenziell.md)
+- [Associative Containers](cpp08_02_00_Container_Assoziativ.md)
+    - [Unsorted Containers](cpp08_03_Container_unsort.md)
+- [lib `algorithm`](cpp08_04_Algoritmen.md)
+- [Iterators](cpp08_05_Iteratoren.md)
+- [Functors](cpp08_06_Funtoren.md)
 
 ---
 ### Look also
 
 - **[Rules](../rulesetting/cpp_rules_picine.md)**
 
-- **[Good Practiec](../rulesetting/cpp_rules_good_practice.md)**
+- **[Good Practice](../rulesetting/cpp_rules_good_practice.md)**

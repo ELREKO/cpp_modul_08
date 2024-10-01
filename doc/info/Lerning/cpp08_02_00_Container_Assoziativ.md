@@ -1,54 +1,53 @@
-< [back](cpp08_01_00_Container_Sequenziell.md) | [main](/) | [forward](cpp08_03_Container_unsort.md) > 
+< [back](cpp08_01_00_Container_Sequenziell.md) | [main](/) | [forward](cpp08_03_Container_unsort.md) >
 
 ---
 
-# Assoziative Container 
+# Associative Containers 
 
 ## std::set
-- Speicherung in sotrierten Reihenfolge -> Binaersuchstuktur (Rot-Schwarz-Baum)
-- keine Dublikate 
-- Such-, Einfuege und Loeschopperation brauchen `O(log(n))`
+- Storage in sorted order -> Binary search structure (Red-Black Tree)
+- No duplicates allowed 
+- Search, insertion, and deletion operations take `O(log(n))`
 
-### Vorteile 
-- Bei Einduetigen Zahlen so wie Mengenoperationen 
-- Effiziente Suche 
+### Advantages 
+- Suitable for unique numbers as well as set operations 
+- Efficient searching 
 
-### Nachteile
-- Kein Zugriff auf Elemente über **Index**
-- hoher Speicherbedarf als `vector`
+### Disadvantages
+- No access to elements via **index**
+- Higher memory usage than `vector`
 
 ## std::multiset
-- gleich wie `set` jedoch dublikate sind erlaubt
+- Same as `set`, but duplicates are allowed
 
-### Vorteile 
-- duplikate sind erlaubt 
+### Advantages 
+- Duplicates are allowed 
 
-### Nachteile 
-- kein eindeutiges Speichern 
+### Disadvantages 
+- No unique storage 
 
 ## std::map
-- Sortierung in Baumstrucktur wie bei `set` 
-- Es gibt einen Schlüssel 
-- Ein eindeutiger Schüsselwert 
+- Sorted in a tree structure like `set` 
+- There is a key 
+- A unique key value 
 
-### Vorteile 
-- Schlüssel sind automatisch sortiert 
-- Kein Duplikate 
-- Bei Suche Logarithmische Zeitkomplexität `O(log(n))`
+### Advantages 
+- Keys are automatically sorted 
+- No duplicates 
+- Logarithmic time complexity `O(log(n))` for searches
 
-### Nachteile 
-- Grosser Speicherverbrauche und Overhead
-- Lansame Einfügungsoperation 
+### Disadvantages 
+- High memory consumption and overhead
+- Slow insertion operations 
 
 ## std::multimap
-- Siehe map nur Duplikate sind erlaubt. 
+- Similar to `map`, but duplicates are allowed. 
 
-### Vorteile 
-- Duplicate sind erlaubt 
+### Advantages 
+- Duplicates are allowed 
 
-### Nachteile 
-- Groesser Overhead 
+### Disadvantages 
+- Greater overhead 
+
 ---
-![übersicht](../pic/assoziativ_containers.png)
-
-
+![Overview](../pic/assoziativ_containers.png)

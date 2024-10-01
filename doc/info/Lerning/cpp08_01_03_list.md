@@ -1,60 +1,61 @@
 
 # List
-Einfaches flexibles Einfügen und Löschen an beliebigen Positionen möglich und effizienter als bei vector und deque, <span style="background-color: red;">jedoch keinen direkten Zugriff auf Elemente über Indizes bietet.</span>
+Simple flexible insertion and deletion at any position is possible and more efficient than with vector and deque, <span style="background-color: red;">but it does not provide direct access to elements via indices.</span>
+
 ## Include
 ```cpp
 #include <list>
 ```
 
-## Konstruktoren
+## Constructors
 ```cpp
 std::list<int> lst1;               // Default Constructor 
-std::list<int> lst2(5);            // List mit 5 Elementen, alle mit 0 initialisiert
-std::list<int> lst3(5, 10);        // List mit 5 Elementen, alle mit dem Wert 10
-std::list<int> lst4 = {1, 2, 3, 4, 5}; // List mit 5 Elementen mit den entsprechenden Werten
+std::list<int> lst2(5);            // List with 5 elements, all initialized to 0
+std::list<int> lst3(5, 10);        // List with 5 elements, all set to the value 10
+std::list<int> lst4 = {1, 2, 3, 4, 5}; // List with 5 elements with the corresponding values
 std::list<int> lst5(lst4);         // Copy List 
-lst1 = lst5;                       // Zuweisung List 
+lst1 = lst5;                       // Assignment List 
 ```
 
-## Methoden
+## Methods
 
-Die häufigsten Methoden des `std::list` Containers
+The most common methods of the `std::list` container
 
-| Methode                     | Beschreibung                                                               | Beispiel                                      |
+| Method                     | Description                                                               | Example                                      |
 |----------------------------|---------------------------------------------------------------------------|-----------------------------------------------|
-| `push_back(value)`         | Fügt ein Element am Ende der Liste hinzu.                               | `lst.push_back(7);`                          |
-| `push_front(value)`        | Fügt ein Element am Anfang der Liste hinzu.                             | `lst.push_front(0);`                         |
-| `pop_back()`               | Entfernt das letzte Element der Liste.                                   | `lst.pop_back();`                            |
-| `pop_front()`              | Entfernt das erste Element der Liste.                                    | `lst.pop_front();`                           |
-| `insert(position, value)`   | Fügt ein Element an der angegebenen Position in der Liste ein.          | `lst.insert(++lst.begin(), 5);`              |
-| `erase(position)`          | Entfernt das Element an der angegebenen Position.                        | `lst.erase(++lst.begin());`                  |
-| `clear()`                  | Entfernt alle Elemente aus der Liste.                                    | `lst.clear();`                               |
-| `size()`                   | Gibt die Anzahl der aktuellen Elemente in der Liste zurück.              | `size_t n = lst.size();`                     |
-| `empty()`                  | Überprüft, ob die Liste leer ist.                                        | `bool isEmpty = lst.empty();`                |
+| `push_back(value)`         | Adds an element to the end of the list.                                 | `lst.push_back(7);`                          |
+| `push_front(value)`        | Adds an element to the front of the list.                               | `lst.push_front(0);`                         |
+| `pop_back()`               | Removes the last element of the list.                                    | `lst.pop_back();`                            |
+| `pop_front()`              | Removes the first element of the list.                                   | `lst.pop_front();`                           |
+| `insert(position, value)`   | Inserts an element at the specified position in the list.               | `lst.insert(++lst.begin(), 5);`              |
+| `erase(position)`          | Removes the element at the specified position.                           | `lst.erase(++lst.begin());`                  |
+| `clear()`                  | Removes all elements from the list.                                      | `lst.clear();`                               |
+| `size()`                   | Returns the number of current elements in the list.                      | `size_t n = lst.size();`                     |
+| `empty()`                  | Checks whether the list is empty.                                        | `bool isEmpty = lst.empty();`                |
 
-- Die Angabe der Position bei `insert()` und `erase()` muss entsprechend mit der Verwendung des Iterators angegeben werden, z.B. `lst.insert(++lst.begin(), 5);` (was die Position 1 ist, also das zweite Element).
+- The position specified in `insert()` and `erase()` must be indicated using an iterator, e.g., `lst.insert(++lst.begin(), 5);` (which refers to position 1, or the second element).
 
 1. **`insert(position, value)`**:
-   - **Beschreibung**: Fügt ein Element an einer bestimmten Position in der Liste ein. Die Position wird durch einen Iterator angegeben.
-   - **Beispiel**:
+   - **Description**: Inserts an element at a specific position in the list. The position is indicated by an iterator.
+   - **Example**:
      ```cpp
-     std::list<double> lst = {1.1, 2.2, 3.3}; // Liste hat: [1.1, 2.2, 3.3]
-     lst.insert(++lst.begin(), 5.5); // Fügt 5.5 an der Position 1 hinzu
-     // Liste hat jetzt: [1.1, 5.5, 2.2, 3.3]
+     std::list<double> lst = {1.1, 2.2, 3.3}; // List contains: [1.1, 2.2, 3.3]
+     lst.insert(++lst.begin(), 5.5); // Inserts 5.5 at position 1
+     // List now contains: [1.1, 5.5, 2.2, 3.3]
      ```
 
 2. **`erase(position)`**:
-   - **Beschreibung**: Entfernt das Element an einer bestimmten Position in der Liste.
-   - **Beispiel**:
+   - **Description**: Removes the element at a specific position in the list.
+   - **Example**:
      ```cpp
-     lst.erase(++lst.begin()); // Entfernt das Element an Position 1 (5.5)
-     // Liste hat jetzt: [1.1, 2.2, 3.3]
+     lst.erase(++lst.begin()); // Removes the element at position 1 (5.5)
+     // List now contains: [1.1, 2.2, 3.3]
      ```
 
-## Zugriff auf Elemente
-- **Kein direkter Zugriff** über Indizes, da es sich um eine doppelt verkettete Liste handelt. Der Zugriff erfolgt normalerweise über Iteratoren.
-- **`front()`**: Gibt das erste Element zurück (kein Bound Check).
-- **`back()`**: Gibt das letzte Element zurück (kein Bound Check).
+## Accessing Elements
+- **No direct access** via indices, as it is a doubly linked list. Access is typically done through iterators.
+- **`front()`**: Returns the first element (no bound check).
+- **`back()`**: Returns the last element (no bound check).
 
 ```cpp
 #include <iostream>
@@ -63,18 +64,18 @@ Die häufigsten Methoden des `std::list` Containers
 int main() {
     std::list<int> lst = {1, 2, 3, 4, 5};
     
-    // Zugriff auf das erste und letzte Element
-    std::cout << "First element: " << lst.front() << std::endl; // Ausgabe: 1
-    std::cout << "Last element: " << lst.back() << std::endl;   // Ausgabe: 5
+    // Accessing the first and last element
+    std::cout << "First element: " << lst.front() << std::endl; // Output: 1
+    std::cout << "Last element: " << lst.back() << std::endl;   // Output: 5
 
     return 0;
 }
 ```
 
-## Iteratoren
-- `begin()` und `end()`: Vorwärtsiteration
-- `rbegin()` und `rend()`: Rückwärtsiteration
-- `cbegin()` und `cend()`: Konstanten-Iteratoren (Keine Modifikation)
+## Iterators
+- `begin()` and `end()`: Forward iteration
+- `rbegin()` and `rend()`: Reverse iteration
+- `cbegin()` and `cend()`: Constant iterators (no modifications allowed)
 
 ```cpp
 #include <iostream>
@@ -83,21 +84,22 @@ int main() {
 int main() {
     std::list<int> lst = {1, 2, 3, 4, 5};
 
-    // Iteration mit einem Iterator
+    // Iterating with an iterator
     for (std::list<int>::iterator it = lst.begin(); it != lst.end(); ++it) {
-        std::cout << *it << " ";  // Ausgabe: 1 2 3 4 5
+        std::cout << *it << " ";  // Output: 1 2 3 4 5
     }
     std::cout << std::endl;
 
-    // Rückwärtsiterieren mit rbegin() und rend()
+    // Reverse iteration with rbegin() and rend()
     for (std::list<int>::reverse_iterator rit = lst.rbegin(); rit != lst.rend(); ++rit) {
-        std::cout << *rit << " ";  // Ausgabe: 5 4 3 2 1
+        std::cout << *rit << " ";  // Output: 5 4 3 2 1
     }
 
     for (std::list<int>::const_iterator it = lst.cbegin(); it != lst.cend(); ++it) {
-        std::cout << *it << " "; // Gibt die Werte aus, kann aber nicht modifiziert werden
+        std::cout << *it << " "; // Outputs the values, but cannot be modified
     }
 
     return 0;
 }
 ```
+

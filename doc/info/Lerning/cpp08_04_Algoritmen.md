@@ -1,8 +1,9 @@
-< [back](cpp08_03_Container_unsort.md) | [main](/) | [forward](cpp08_05_Iteratoren.md) > 
+
+< [back](cpp08_03_Container_unsort.md) | [main](/) | [forward](cpp08_05_Iteratoren.md) >
 
 # Zusammenfassung der `<algorithm>`-Bibliothek in C++
 
-Die `<algorithm>`-Bibliothek in C++ bietet eine Vielzahl von Funktionen für das Durchsuchen, Sortieren, Modifizieren und Verwalten von Daten in `iterativen` Containern wie z.B. `std::vector`, ..., `std::set`, ... , etc. Diese Algorithmen arbeiten oft mit Iteratoren und erlauben die Manipulation der Elemente in Containern.
+Die `<algorithm>`-Bibliothek in C++ bietet eine Vielzahl von Funktionen für das Durchsuchen, Sortieren, Modifizieren und Verwalten von Daten in `iterativen` Containern wie z.B. `std::vector`, `std::set`, usw. Diese Algorithmen arbeiten oft mit Iteratoren und erlauben die Manipulation der Elemente in Containern.
 
 #### Einbinden der Bibliothek
 ```cpp
@@ -121,5 +122,4 @@ Die `<algorithm>`-Bibliothek in C++ bietet eine Vielzahl von Funktionen für das
   ```
 
 ### Iterator-Unterstützung:
-Alle Algorithmen in `<algorithm>` arbeiten mit <span style="color:red"> **Iteratoren**</span>, was bedeutet, dass sie mit einer Vielzahl von Containern funktionieren, die Iteratoren bereitstellen, wie z.B. `std::vector`, `std::list`, `std::deque`, `std::array`, etc.
-
+Alle Algorithmen in `<algorithm>` arbeiten mit <span style="color:red">**Iteratoren**</span>, was bedeutet, dass sie mit einer Vielzahl von Containern funktionieren, die Iteratoren bereitstellen, wie z.B. `std::vector`, `std::list`, `std::deque`, `std::array`, etc.
