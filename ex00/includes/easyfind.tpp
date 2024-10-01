@@ -9,6 +9,12 @@ typename T::iterator easyfind(T& container, int value)
 				return (it);
 		}
 		throw NotFoundException();
+		// Use Algorithm
+		// typename T::iterator itee = std::find(container.begin(), container.end(), value);
+		// if (it == container.end()) {
+		// 	throw std::runtime_error("Wert nicht gefunden");
+		// }
+
 }
 
 template <typename T>
