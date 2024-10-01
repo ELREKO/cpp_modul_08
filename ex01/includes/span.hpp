@@ -5,7 +5,7 @@
 #include <vector>
 #include <list>
 #include <deque>
-#include <algorithm> 
+// #include <algorithm> 
 #include <exception>
 #include <limits>
 #include <cstdlib>

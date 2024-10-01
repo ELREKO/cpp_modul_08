@@ -5,7 +5,7 @@
 #include <vector>
 #include <list>
 #include <deque>
-//#include <algorithm> // für std::find
+#include <algorithm> // für std::find
 #include <exception>
 #include <ctime>
 #include <cstdlib> 
